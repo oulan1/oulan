@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>  o  u  l  a  n  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#1c1c1c;
+      --card-bg: rgba(255,255,255,0.02);
+      --text:#ffffff;
+      --muted:#bdbdc1;
+      --radius:14px;
+      --gap:14px;
+      --card-shadow: 0 4px 14px rgba(0,0,0,0.55);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      overflow:hidden;
+    }
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, system-ui, Arial;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+    
+    .header {
+      margin-bottom: 24px;
+      font-family: monospace;
+      font-size: 18px;
+      color: var(--muted);
+      min-height: 24px;
+      text-align: center;
+    }
+    
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 100px;
+      gap:var(--gap);
+      max-width:480px;
+      width:100%;
+    }
+
+    .card{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--card-bg);
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;color:inherit;
+      box-shadow:var(--card-shadow);
+      transition:transform .3s, box-shadow .3s;
+    }
+    .card .bg{
+      position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.45);
+      transition:transform .4s ease, filter .4s ease;
+    }
+    .card::after{
+      content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(56,10,80,0.2), rgba(16,8,34,0.5));pointer-events:none;
+    }
+    .card .icon{
+      position:absolute;left:8px;top:8px;width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;padding:4px;
+    }
+    .card .label{
+      position:absolute;right:10px;bottom:10px;font-weight:600;font-size:14px;color:#ffffff !important;text-shadow:0 2px 10px rgba(0,0,0,0.6);
+    }
+    .card:hover{
+      transform:scale(1.05);
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+    }
+    .card:hover .bg{
+      transform:scale(1.12);
+      filter:blur(1.2px) brightness(.75);
+    }
+
+    .tg-channel{grid-column:1/3;grid-row:1/3}
+    .tg-dm{grid-column:3/4;grid-row:1/2}
+    .github{grid-column:3/4;grid-row:2/3}
+    .vk{grid-column:1/2;grid-row:3/4}
+    .steam{grid-column:2/4;grid-row:3/4}
+    .discord{grid-column:1/3;grid-row:4/5}
+    .tiktok{grid-column:3/4;grid-row:4/5}
+    .donate{grid-column:1/2;grid-row:5/6}
+    .achievements{grid-column:2/3;grid-row:5/6}
+    .music{grid-column:3/4;grid-row:5/6}
+
+    .footer{
+      margin-top:24px;
+      font-family:monospace;
+      font-size:18px;
+      color:var(--muted);
+      min-height:24px;
+      visibility: hidden;
+    }
+    .cursor{display:inline-block;width:8px;height:20px;background:var(--muted);margin-left:4px;border-radius:2px;opacity:1;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:.1}}
+
+    @media(max-width:520px){
+      .grid{grid-template-columns: repeat(3, 1fr);grid-auto-rows:70px;max-width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span id="typebox"></span><span class="cursor"></span>
+  </div>
+  
+  <div class="grid">
+    <a class="card tg-channel" href="https://t.me/oulanGift">
+      <div class="bg" style="background-image:url('https://cdn4.telesco.pe/file/ln0-Nu5wmVv1Hyb3GnFBSCipsff6RlkJPU4B4azvSkQbT3bO0SpJJEsietLU30kTUkgj_fiQYlKk92OOJNsMVVhXSmFT36_mdthCRVbAe20ydLY-1EBWJ8iDp0gI3-6ArPIsIW8qJnKPSp4tubWpvOUojgr-a7gqUH8CQf5bb0jOL-PUzZdTlZ2bxGHutnkDiAFKphcqmvIdIxeP4lnMTqz3JCfoEyOViEI9YotN5qPNJVo5U-ND_yJqtbsN3RQohabNDiZEC0b1f446juusgU406QtQlGHuTUXMDs8_mIqnA6ALvh2_YRWkTBR9LSa307lpYQhnCodwarB7CdCNKw.jpg')"></div>
+      <div class="icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:22px;height:22px"></div>
+      <div class="label">Telegram Channel</div>
+    </a>
+    <a class="card tg-dm" href="https://t.me/oulan1">
+      <div class="bg" style="background-image:url('https://cdn4.telesco.pe/file/KbVKobRF9pWvr3QeUIcYtRKLEq9p-DM-2RMpNEvbF26xA0eE_i76YUr3FbLofaqMZxYGCGWNIsccggKRlWKFmA7h7Ltg0v5k6F5-AK0bJcVmVfv5oA3IKHoAHg6chHL71NgN5UX7AgxNgsq1Gbs0JfvfT9Ntv_C-501DVvbFMNuettv39khmHrSWhA-mQfl8yrbKzUe57GLGa83G2Zsgep9B7Ne6Cw76Pv-DINePK2Q9u9k61MlZ-AfaWhOtrbEGDWX7Y_IsGhAVij0CKti-cXPSHEts6N6pBDcU2dDYg3fcBLt6oPGfzQQ8itEAsmQ1zQm4HhhoHimX_CSdHLXt4A.jpg')"></div>
+      <div class="icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:22px;height:22px"></div>
+      <div class="label">Telegram dm</div>
+    </a>
+    <a class="card github" href="https://github.com/oulan1">
+      <div class="bg" style="background-image:url('https://camo.githubusercontent.com/95faa7786d2efd316630c24a0f37556179dc420f292c04d52b0da3ac5032e07f/68747470733a2f2f63646e2e706978616261792e636f6d2f70686f746f2f323032322f30312f33302f31332f33332f6769746875622d363938303839345f313238302e706e67')"></div>
+      <div class="icon"><img src="https://i.postimg.cc/8CypN6bL/f57c81a38fbef92eab8bf99276f70464.png" style="width:22px;height:22px"></div>
+      <div class="label">GitHub</div>
+    </a>
+    <a class="card vk" href="#">
+      <div class="bg" style="background-image:url('images/vk.jpg')"></div>
+      <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Antu_security-high.svg/1024px-Antu_security-high.svg.png" style="width:25px;height:25px"></div>
+      <div class="label">soon...</div>
+    </a>
+    <a class="card steam" href="https://steamcommunity.com/id/oulan1/">
+      <div class="bg" style="background-image:url('https://i.pinimg.com/736x/97/fa/7b/97fa7b932861cd10601b819a97b640d5.jpg')"></div>
+      <div class="icon"><img src="https://www.vive.com/media/filer_public/35/e3/35e38664-1791-4444-b83e-b9967c1c1e22/icon-steam.png" style="width:22px;height:22px"></div>
+      <div class="label">Steam</div>
+    </a>
+    <a class="card discord" href="https://webmaster-tools.online/bins/acff59beb5c8b9ef7255cbd03ebdc531">
+      <div class="bg" style="background-image:url('https://i.pinimg.com/736x/f6/ae/90/f6ae90659f6eea25511c49ad4167ae5e.jpg')"></div>
+      <div class="icon"><img src="https://images.steamusercontent.com/ugc/2476494107801523398/BE636CED49C92661F0568C32B7EBDE821AD29BF3/" style="width:22px;height:16px"></div>
+      <div class="label">Discord</div>
+    </a>
+    <a class="card tiktok" href="https://www.tiktok.com/@MS4wLjABAAAAX6zAjxRmV8ULrYO_F3HtBE4aSXX1E9Vey1hdhsswTRFhKotDGnubSEXMOuDbcK6T?_t=ZT-8zfaodc7UOd&_r=1">
+      <div class="bg" style="background-image:url('https://i.pinimg.com/1200x/2f/64/6d/2f646dedd8c86a160368c883d244406b.jpg')"></div>
+      <div class="icon"><img src="https://i.postimg.cc/mZ1LWh1F/e19bb6a0396fdfff0220c982289ff11c.png" style="width:22px;height:22px"></div>
+      <div class="label">TikTok</div>
+    </a>
+    <a class="card donate" href="http://t.me/send?start=IVj5yBoeJGKP">
+      <div class="bg" style="background-image:url('https://cdn4.telesco.pe/file/IMh4D3BzKl3iOX7KPXdv6Qdyltu4stypGECGagezIpWziw-39ot0l0-a_2r1o90LZi1WfpEtWRszvtOLG07o7UBjAqtiJfFdPzqwEYMmhSSEpo6-oQEuiidzGFsDUVS7UXxwwgsHH-rqJ0zcUOvS09OBOE8zf1hgLFirAY4TkUjEiU0PDDlAmtlGnUot5y0kc391QAGNixFgEJKG0fzVyQJNUzQRrYkljmxi5O-4XyGRPoTSkFg6Gs_puxtHdZrhFk8cc9vQndDhse7QgaOxnxM3f0HFPf3QA0wWNPRrass-zcOK2nq1vMUQX956MGh3rBtHfKxT9gKY1qYYHDtl6Q.jpg')"></div>
+      <div class="icon"><img src="https://changelly.com/blog/wp-content/uploads/2024/06/toncoin-ton-logo.png" style="width:22px;height:22px"></div>
+      <div class="label">Donate</div>
+    </a>
+    <a class="card achievements" href="#">
+      <div class="bg" style="background-image:url('https://i.pinimg.com/736x/54/c0/d7/54c0d77c986c35fac29feab5fad6ea89.jpg')"></div>
+      <div class="icon"><img src="https://i.pinimg.com/originals/5a/65/45/5a654503550ccd150d4a7d7973fed52c.png" style="width:34px;height:22px"></div>
+      <div class="label">My achievements</div>
+    </a>
+    <a class="card music" href="https://music.yandex.ru/playlists/4dff51ae-944a-36d6-8245-2e34511d1e7f?utm_source=web&utm_medium=copy_link">
+      <div class="bg" style="background-image:url('https://avatars.yandex.net/get-music-user-playlist/34120/1353128323.1001.97902/100x100?1734537997902')"></div>
+      <div class="icon"><img src="https://cdn.hipolink.net/6deec7e4-82d1-40dd-86f5-1c44badb49e3" style="width:22px;height:22px"></div>
+      <div class="label">Music</div>
+    </a>
+  </div>
+  
+  <div class="footer">
+    <span></span><span class="cursor"></span>
+  </div>
+  
+  <script>
+    // Typing loop
+    (function(){
+      const texts = ["Hello World!","oulan","Beginner developer"];
+      const el = document.getElementById('typebox');
+      let ti = 0, pos = 0, deleting=false;
+      const speed = 140, delSpeed = 100, pause = 1000;
+
+      function step(){
+        const cur = texts[ti%texts.length];
+        if(!deleting){
+          el.textContent = cur.slice(0,pos+1);
+          pos++;
+          if(pos>=cur.length){deleting=true; setTimeout(step,pause); return}
+          setTimeout(step,speed);
+        }else{
+          el.textContent = cur.slice(0,pos-1);
+          pos--;
+          if(pos<=0){deleting=false;ti++; setTimeout(step,500);return}
+          setTimeout(step,delSpeed);
+        }
+      }
+      step();
+    })();
+
+    // Sliding title animation
+    (function(){
+      let arr = '  o  u  l  a  n  '.split('');
+      setInterval(()=>{
+        arr.push(arr.shift());
+        document.title = arr.join('');
+      },300);
+    })();
+  </script>
+</body>
+</html>

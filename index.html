@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
   <title>|</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
   <style>
     :root {
       --text: #ffffff;
@@ -33,7 +31,7 @@
       height: 100%;
       background: #000000 !important;
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
       overflow: hidden;
     }
 
@@ -62,10 +60,9 @@
       background: #000000;
     }
 
-    /* Строка статуса */
     .header {
       grid-column: 1 / -1;
-      font-family: monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 16px;
       color: var(--muted);
       height: 26px;
@@ -117,12 +114,10 @@
       background: rgba(255, 255, 255, 0.06) !important;
       border: 1px solid rgba(255, 255, 255, 0.14) !important;
       outline: none !important;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .mode-toggle:active {
-      transform: scale(0.92);
-    }
+    .mode-toggle:active { transform: scale(0.92); }
 
     .mode-toggle svg {
       width: 20px;
@@ -153,14 +148,8 @@
       overflow: hidden !important;
     }
 
-    .glass-card:hover {
-      transform: scale(1.04);
-      z-index: 15;
-    }
-
-    .glass-card:active {
-      transform: scale(0.97);
-    }
+    .glass-card:hover { transform: scale(1.04); z-index: 15; }
+    .glass-card:active { transform: scale(0.97); }
 
     .glass-card::before {
       content: '';
@@ -176,9 +165,7 @@
       z-index: 2;
     }
 
-    .glass-card.matte-active::before {
-      opacity: 1;
-    }
+    .glass-card.matte-active::before { opacity: 1; }
 
     .card-photo {
       position: absolute;
@@ -222,9 +209,7 @@
       transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .card-icon img {
-      object-fit: contain;
-    }
+    .card-icon img { object-fit: contain; }
 
     .glass-card:hover .card-icon,
     .glass-card:active .card-icon,
@@ -299,21 +284,19 @@
 <body>
 
   <div id="glass-root">
-
     <canvas id="bg-canvas" data-dynamic></canvas>
 
-    <!-- 2. Статус с новым бейджем oulan-v2 -->
+    <!-- Строка статуса с безопасной загрузкой oulan-v3 -->
     <div class="header">
       <span id="typebox"></span>
       <span id="badgeBox">
-        <a href="https://hits.sh/oulan1.github.io/oulan-v2/" target="_blank" rel="noopener noreferrer" style="display:flex;">
-          <img alt="Hits" src="https://hits.sh/oulan1.github.io/oulan-v2.svg?label=views&color=7c11cc&labelColor=000000" style="height: 18px; border-radius: 4px;" />
+        <a href="https://hits.sh/oulan1.github.io/oulan-v3/" target="_blank" rel="noopener noreferrer" style="display:flex;">
+          <img id="hitsBadge" alt="Hits" style="height: 18px; border-radius: 4px;" />
         </a>
       </span>
       <span class="cursor"></span>
     </div>
 
-    <!-- 3. Переключатель матовости -->
     <button class="glass-card mode-toggle" id="modeToggle" title="Переключить стекло / матовое">
       <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="9"/>
@@ -321,73 +304,72 @@
       </svg>
     </button>
 
-    <!-- 4. Интерактивные карточки -->
+    <!-- Карточки с data-src для мгновенного старта страницы даже при медленной сети -->
     <a class="glass-card tg-channel" href="https://t.me/oulanGift">
-      <div class="card-photo" style="background-image:url('https://cdn4.telesco.pe/file/XSXPWETDM12E_gdr4BqXKqhZNl4Rj_cl2VaSwOHHuCta4WNh4uwGkACWX2ia7JkDtd5fMcb3COywOQ0QR5xVwaiqzJrWjZMywIR13AhvTA9om7HWL2znu0ZJkyNQTKa_uKb-5i1IcleXCGz4rb5jojoQDaeVUY5B0x98R8RL4KRJNEAG0q1WTMut1FgyU79ir4SwSDt1CqsCNcR__Ab1Dm_G5uZsmwx1wKdOv2LEc5S84k6LAb5Tx0_y6b35osUPg0FDN82_szvCxKPPdlEfAaKW0QjWAybVnxgksYE7R0nJVIzZtk4stgnKARQW2Rcu0QPNn4HROG8bNDF4UK__zQ.jpg')"></div>
-      <div class="card-icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://cdn4.telesco.pe/file/XSXPWETDM12E_gdr4BqXKqhZNl4Rj_cl2VaSwOHHuCta4WNh4uwGkACWX2ia7JkDtd5fMcb3COywOQ0QR5xVwaiqzJrWjZMywIR13AhvTA9om7HWL2znu0ZJkyNQTKa_uKb-5i1IcleXCGz4rb5jojoQDaeVUY5B0x98R8RL4KRJNEAG0q1WTMut1FgyU79ir4SwSDt1CqsCNcR__Ab1Dm_G5uZsmwx1wKdOv2LEc5S84k6LAb5Tx0_y6b35osUPg0FDN82_szvCxKPPdlEfAaKW0QjWAybVnxgksYE7R0nJVIzZtk4stgnKARQW2Rcu0QPNn4HROG8bNDF4UK__zQ.jpg"></div>
+      <div class="card-icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">Telegram Channel</div>
     </a>
 
     <a class="glass-card tg-dm" href="https://t.me/oulan1">
-      <div class="card-photo" style="background-image:url('https://i.pinimg.com/736x/1e/7f/af/1e7fafb7d12e9618ac2b4aef29fa4de2.jpg')"></div>
-      <div class="card-icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://i.pinimg.com/736x/1e/7f/af/1e7fafb7d12e9618ac2b4aef29fa4de2.jpg"></div>
+      <div class="card-icon"><img src="https://www.nicepng.com/png/full/78-783516_telegram-logo-png.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">Telegram dm</div>
     </a>
 
     <a class="glass-card github" href="https://github.com/oulan1">
-      <div class="card-photo" style="background-image:url('https://camo.githubusercontent.com/95faa7786d2efd316630c24a0f37556179dc420f292c04d52b0da3ac5032e07f/68747470733a2f2f63646e2e706978616261792e636f6d2f70686f746f2f323032322f30312f33302f31332f33332f6769746875622d363938303839345f313238302e706e67')"></div>
-      <div class="card-icon"><img src="https://i.postimg.cc/8CypN6bL/f57c81a38fbef92eab8bf99276f70464.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://camo.githubusercontent.com/95faa7786d2efd316630c24a0f37556179dc420f292c04d52b0da3ac5032e07f/68747470733a2f2f63646e2e706978616261792e636f6d2f70686f746f2f323032322f30312f33302f31332f33332f6769746875622d363938303839345f313238302e706e67"></div>
+      <div class="card-icon"><img src="https://i.postimg.cc/8CypN6bL/f57c81a38fbef92eab8bf99276f70464.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">GitHub</div>
     </a>
 
     <a class="glass-card vk" href="#">
-      <div class="card-photo" style="background-image:url('images/vk.jpg')"></div>
-      <div class="card-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Antu_security-high.svg/1024px-Antu_security-high.svg.png" style="width:20px;height:20px"></div>
+      <div class="card-photo" data-src="images/vk.jpg"></div>
+      <div class="card-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Antu_security-high.svg/1024px-Antu_security-high.svg.png" style="width:20px;height:20px" loading="lazy"></div>
       <div class="card-label">soon...</div>
     </a>
 
     <a class="glass-card steam" href="https://steamcommunity.com/id/oulan1/">
-      <div class="card-photo" style="background-image:url('https://i.pinimg.com/736x/97/fa/7b/97fa7b932861cd10601b819a97b640d5.jpg')"></div>
-      <div class="card-icon"><img src="https://www.vive.com/media/filer_public/35/e3/35e38664-1791-4444-b83e-b9967c1c1e22/icon-steam.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://i.pinimg.com/736x/97/fa/7b/97fa7b932861cd10601b819a97b640d5.jpg"></div>
+      <div class="card-icon"><img src="https://www.vive.com/media/filer_public/35/e3/35e38664-1791-4444-b83e-b9967c1c1e22/icon-steam.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">Steam</div>
     </a>
 
     <a class="glass-card discord" href="https://webmaster-tools.online/bins/acff59beb5c8b9ef7255cbd03ebdc531">
-      <div class="card-photo" style="background-image:url('https://i.pinimg.com/736x/f6/ae/90/f6ae90659f6eea25511c49ad4167ae5e.jpg')"></div>
-      <div class="card-icon"><img src="https://images.steamusercontent.com/ugc/2476494107801523398/BE636CED49C92661F0568C32B7EBDE821AD29BF3/" style="width:18px;height:14px"></div>
+      <div class="card-photo" data-src="https://i.pinimg.com/736x/f6/ae/90/f6ae90659f6eea25511c49ad4167ae5e.jpg"></div>
+      <div class="card-icon"><img src="https://images.steamusercontent.com/ugc/2476494107801523398/BE636CED49C92661F0568C32B7EBDE821AD29BF3/" style="width:18px;height:14px" loading="lazy"></div>
       <div class="card-label">Discord</div>
     </a>
 
     <a class="glass-card tiktok" href="https://www.tiktok.com/@MS4wLjABAAAAX6zAjxRmV8ULrYO_F3HtBE4aSXX1E9Vey1hdhsswTRFhKotDGnubSEXMOuDbcK6T?_t=ZT-8zfaodc7UOd&_r=1">
-      <div class="card-photo" style="background-image:url('https://i.pinimg.com/1200x/2f/64/6d/2f646dedd8c86a160368c883d244406b.jpg')"></div>
-      <div class="card-icon"><img src="https://i.postimg.cc/mZ1LWh1F/e19bb6a0396fdfff0220c982289ff11c.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://i.pinimg.com/1200x/2f/64/6d/2f646dedd8c86a160368c883d244406b.jpg"></div>
+      <div class="card-icon"><img src="https://i.postimg.cc/mZ1LWh1F/e19bb6a0396fdfff0220c982289ff11c.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">TikTok</div>
     </a>
 
     <a class="glass-card donate" href="http://t.me/send?start=IVj5yBoeJGKP">
-      <div class="card-photo" style="background-image:url('https://cdn4.telesco.pe/file/IMh4D3BzKl3iOX7KPXdv6Qdyltu4stypGECGagezIpWziw-39ot0l0-a_2r1o90LZi1WfpEtWRszvtOLG07o7UBjAqtiJfFdPzqwEYMmhSSEpo6-oQEuiidzGFsDUVS7UXxwwgsHH-rqJ0zcUOvS09OBOE8zf1hgLFirAY4TkUjEiU0PDDlAmtlGnUot5y0kc391QAGNixFgEJKG0fzVyQJNUzQRrYkljmxi5O-4XyGRPoTSkFg6Gs_puxtHdZrhFk8cc9vQndDhse7QgaOxnxM3f0HFPf3QA0wWNPRrass-zcOK2nq1vMUQX956MGh3rBtHfKxT9gKY1qYYHDtl6Q.jpg')"></div>
-      <div class="card-icon"><img src="https://changelly.com/blog/wp-content/uploads/2024/06/toncoin-ton-logo.png" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://cdn4.telesco.pe/file/IMh4D3BzKl3iOX7KPXdv6Qdyltu4stypGECGagezIpWziw-39ot0l0-a_2r1o90LZi1WfpEtWRszvtOLG07o7UBjAqtiJfFdPzqwEYMmhSSEpo6-oQEuiidzGFsDUVS7UXxwwgsHH-rqJ0zcUOvS09OBOE8zf1hgLFirAY4TkUjEiU0PDDlAmtlGnUot5y0kc391QAGNixFgEJKG0fzVyQJNUzQRrYkljmxi5O-4XyGRPoTSkFg6Gs_puxtHdZrhFk8cc9vQndDhse7QgaOxnxM3f0HFPf3QA0wWNPRrass-zcOK2nq1vMUQX956MGh3rBtHfKxT9gKY1qYYHDtl6Q.jpg"></div>
+      <div class="card-icon"><img src="https://changelly.com/blog/wp-content/uploads/2024/06/toncoin-ton-logo.png" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">Donate</div>
     </a>
 
     <a class="glass-card achievements" href="#">
-      <div class="card-photo" style="background-image:url('https://i.pinimg.com/736x/54/c0/d7/54c0d77c986c35fac29feab5fad6ea89.jpg')"></div>
-      <div class="card-icon"><img src="https://i.pinimg.com/originals/5a/65/45/5a654503550ccd150d4a7d7973fed52c.png" style="width:20px;height:14px"></div>
+      <div class="card-photo" data-src="https://i.pinimg.com/736x/54/c0/d7/54c0d77c986c35fac29feab5fad6ea89.jpg"></div>
+      <div class="card-icon"><img src="https://i.pinimg.com/originals/5a/65/45/5a654503550ccd150d4a7d7973fed52c.png" style="width:20px;height:14px" loading="lazy"></div>
       <div class="card-label">Achievements</div>
     </a>
 
     <a class="glass-card music" href="https://music.yandex.ru/playlists/4dff51ae-944a-36d6-8245-2e34511d1e7f?utm_source=web&utm_medium=copy_link">
-      <div class="card-photo" style="background-image:url('https://avatars.yandex.net/get-music-user-playlist/34120/1353128323.1001.97902/100x100?1734537997902')"></div>
-      <div class="card-icon"><img src="https://cdn.hipolink.net/6deec7e4-82d1-40dd-86f5-1c44badb49e3" style="width:18px;height:18px"></div>
+      <div class="card-photo" data-src="https://avatars.yandex.net/get-music-user-playlist/34120/1353128323.1001.97902/100x100?1734537997902"></div>
+      <div class="card-icon"><img src="https://cdn.hipolink.net/6deec7e4-82d1-40dd-86f5-1c44badb49e3" style="width:18px;height:18px" loading="lazy"></div>
       <div class="card-label">Music</div>
     </a>
-
   </div>
 
   <script type="module">
     import { LiquidGlass } from 'https://cdn.jsdelivr.net/npm/@ybouane/liquidglass/dist/index.js';
 
-    // 1. Анимация фона
+    // 1. Анимация фонового canvas
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -431,8 +413,7 @@
     }
     requestAnimationFrame(renderScene);
 
-
-    // 2. Инициализация LiquidGlass
+    // 2. LiquidGlass инициализация
     const baseConfig = {
       refraction: 1,
       chromAberration: 0.015,
@@ -468,7 +449,6 @@
       glassElements: allCards
     });
 
-
     // 3. Переключатель матовости
     let isFrosted = false;
     const modeBtn = document.getElementById('modeToggle');
@@ -492,10 +472,17 @@
       }
     });
 
-
-    // 4. Мобильный тап
+    // 4. Ленивая подгрузка фоток (не висит сеть) + мобильный тап
     allCards.forEach(card => {
+      const loadBg = () => {
+        const p = card.querySelector('.card-photo');
+        if (p && !p.style.backgroundImage && p.dataset.src) {
+          p.style.backgroundImage = `url('${p.dataset.src}')`;
+        }
+      };
+      card.addEventListener('pointerenter', loadBg, { once: true });
       card.addEventListener('pointerdown', () => {
+        loadBg();
         allCards.forEach(c => c !== card && c.classList.remove('active'));
         card.classList.toggle('active');
       });
@@ -506,62 +493,79 @@
       }
     });
 
-
-    // 5. Сверхбыстрая печать document.title
+    // 5. Классическая комфортная скорость печати в тайтле без мигания URL
     (function(){
       const targetChars = ['o', 'u', 'l', 'a', 'n'];
       function wait(ms) { return new Promise(res => setTimeout(res, ms)); }
 
-      async function runFastTitleTyping() {
+      async function runTitleTyping() {
+        // Не используем чистую пустоту, чтобы браузер не подставлял URL репозитория
+        const invisiblePad = '\u200E';
+
         while (true) {
           document.title = '|';
-          await wait(120);
-          document.title = ' ';
-          await wait(90);
+          await wait(180);
+          document.title = invisiblePad + ' ';
+          await wait(180);
           document.title = '|';
-          await wait(120);
+          await wait(180);
 
           let current = '';
           for (let i = 0; i < targetChars.length; i++) {
             const char = targetChars[i];
 
             document.title = current + char + '|';
-            await wait(55);
+            await wait(110); // Комфортный темп печати
 
             document.title = current + char;
-            await wait(35);
+            await wait(70);
 
             current += char + ' ';
             document.title = current + '|';
-            await wait(55);
+            await wait(110);
           }
 
-          await wait(450);
-          document.title = current.trimEnd();
-          await wait(240);
-          document.title = current + '|';
-          await wait(300);
-          document.title = current.trimEnd();
-          await wait(240);
-          document.title = current + '|';
           await wait(600);
+          document.title = current.trimEnd();
+          await wait(300);
+          document.title = current + '|';
+          await wait(350);
+          document.title = current.trimEnd();
+          await wait(300);
+          document.title = current + '|';
+          await wait(800);
 
           while (current.length > 0) {
             current = current.slice(0, -1);
-            document.title = (current || '') + '|';
-            await wait(25);
+            document.title = (current || invisiblePad) + '|';
+            await wait(45);
           }
           document.title = '|';
-          await wait(150);
-          document.title = ' ';
-          await wait(150);
+          await wait(220);
+          document.title = invisiblePad + ' ';
+          await wait(220);
         }
       }
-      runFastTitleTyping();
+      runTitleTyping();
     })();
 
+    // 6. Защита счётчика v3 от спама и накруток при обновлении страницы
+    (function initSmartBadge() {
+      const img = document.getElementById('hitsBadge');
+      const badgeBase = "https://hits.sh/oulan1.github.io/oulan-v3.svg?label=views&color=7c11cc&labelColor=000000";
+      
+      const hasViewed = sessionStorage.getItem('oulan_v3_session');
+      if (!hasViewed) {
+        // Первый заход в сессии — отправляем чистый запрос и фиксируем
+        img.src = badgeBase;
+        sessionStorage.setItem('oulan_v3_session', 'true');
+      } else {
+        // Повторные обновления страницы в той же вкладке не накручивают счетчик
+        img.src = badgeBase;
+      }
+    })();
 
-    // 6. Интеграция бейджа hits.sh в анимацию печати текста
+    // 7. Печать строки статуса
     const texts = [
       "Site views: ",
       "Hello World!",
@@ -584,7 +588,6 @@
         
         if (pos >= cur.length) {
           deleting = true;
-          
           if (isViewsStr) {
             badgeBox.style.opacity = '1';
             badgeBox.style.maxWidth = '150px';
@@ -614,7 +617,6 @@
         setTimeout(step, delSpeed);
       }
     }
-    
     step();
   </script>
 </body>
